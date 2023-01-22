@@ -9,10 +9,6 @@ import (
 type (
 	Config struct {
 		LogPath   string    `yaml:"log_path"`
-		Transport transport `yaml:"transport"`
-	}
-
-	transport struct {
 		Websocket     websocket     `yaml:"websocket"`
 		MessageBroker messageBroker `yaml:"message_broker"`
 	}

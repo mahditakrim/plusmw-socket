@@ -17,16 +17,16 @@ func Init(conf *config.Config) ([]luncher.Runnable, error) {
 		return nil, err
 	}
 
-	ws, err := websocket.NewWebsocket(service, conf.Transport.Websocket.Addr)
+	ws, err := websocket.NewWebsocket(service, conf.Websocket.Addr)
 	if err != nil {
 		return nil, err
 	}
 
 	mb, err := messagebroker.NewSubscriber(service,
-		conf.Transport.MessageBroker.Nats.Addr,
-		conf.Transport.MessageBroker.Nats.Username,
-		conf.Transport.MessageBroker.Nats.Password,
-		conf.Transport.MessageBroker.Nats.Subjects["messages"])
+		conf.MessageBroker.Nats.Addr,
+		conf.MessageBroker.Nats.Username,
+		conf.MessageBroker.Nats.Password,
+		conf.MessageBroker.Nats.Subjects["messages"])
 	if err != nil {
 		return nil, err
 	}
