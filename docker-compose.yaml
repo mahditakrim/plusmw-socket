@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  nats:
+    image: 'bitnami/nats:latest'
+    environment:
+      - NATS_ENABLE_AUTH=yes
+      - NATS_USERNAME=nats
+      - NATS_PASSWORD=natspassword
+    ports:
+      - 4222:4222
+      - 8222:8222
+      # - 6222:6222
+
+  socket:
+    build: .
+    restart: always
+    depends_on:
+      - nats
+    ports:
+      - 8081:8080
+    volumes:
+      - ./log.txt:/app/log.txt
+
+  # socket-1:
+  #   build: .
+  #   restart: always
+  #   depends_on:
+  #     - nats
+  #   ports:
+  #     - 8082:8080
+  #   volumes:
+  #     - ./log.txt:/app/log.txt
+
+  # socket-2:
+  #   build: .
+  #   restart: always
+  #   depends_on:
+  #     - nats
+  #   ports:
+  #     - 8083:8080
+  #   volumes:
+  #     - ./log.txt:/app/log.txt

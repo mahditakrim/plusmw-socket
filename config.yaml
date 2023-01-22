@@ -1,0 +1,13 @@
+log_path: "./log.txt"
+
+transport:
+  websocket:
+    addr: ":8080"
+  message_broker:
+    nats:
+      addr: "nats:4222"
+      # addr: "localhost:4222"
+      username: "nats"
+      password: "natspassword"
+      subjects:
+        messages: "messages"
