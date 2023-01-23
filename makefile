@@ -30,6 +30,7 @@ deps:
 		$(GOMOD) vendor
 
 upgrade-deps:
+		$(GOMOD) tidy
 		go get -u all
 		$(GOMOD) tidy
 		$(GOMOD) vendor
